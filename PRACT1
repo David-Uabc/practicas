@@ -1,0 +1,113 @@
+package practica1;
+import java.util.Scanner;
+
+public class practica1 {
+
+    	public static void main(String[] args) {
+        Scanner Terminal = new Scanner(System.in);
+        Scanner opciones= new Scanner(System.in);
+        
+        double Calificaciones[];
+        String Alumnos[];          
+        int x, opc=0;
+        double Promedio;
+        
+        System.out.print("Ingrese la cantidad de alumnos ");
+        x = Terminal.nextInt();
+        Calificaciones = new double[x];
+        Alumnos = new String[x];
+       
+       //menu que se repitira hasta que la persona lo considere  
+        do {
+        	System.out.println("\n");
+            System.out.println("1-*Captura de nombre y calificaciones ");
+            System.out.println("2-*Imprimir calificaciones y promedio de calificaciones ");
+            System.out.println("3-*Imprimir calificaciones y calificación más alta ");
+            System.out.println("4-*Imprimir calificaciones y calificación más baja");
+            System.out.println("5-*Salir");
+            System.out.print("Ingrese la opcion a solicitar: ");
+            opc = opciones.nextInt();
+            
+        switch(opc) {
+        
+        case 1:
+        Inicializar(Calificaciones, Alumnos, Terminal);
+        break;
+        
+        case 2:
+        Promedio = Promedio(Calificaciones);
+        Imprimir(Calificaciones, Alumnos, Promedio);
+        System.out.flush();//no funciona
+        break;
+        
+        case 3:
+        Mayor(Calificaciones, Alumnos);
+        break;
+        
+        case 4:
+        	Menor(Calificaciones, Alumnos);
+        	break;
+        }
+        }while(opc!=5);
+        System.out.print("gracias por visitar mi programa");
+    }
+//proceso de captura
+    public static void Inicializar(double Calificaciones[], String Alumnos[], Scanner Teclado)
+{
+    for (int i = 0; i < Calificaciones.length; i++)
+    {
+        System.out.print("De el nombre del alumno ");
+        Alumnos[i] = Teclado.next();
+        System.out.print("Ingrese la calificacion ");
+        Calificaciones[i] = Teclado.nextDouble();
+    }
+}
+//proceso de obtencion de promedio
+	public static double Promedio(double Calificaciones[])
+{
+    double prom, suma = 0;
+    for (int i = 0; i < Calificaciones.length; i++)
+        suma += Calificaciones[i];
+    prom = suma / Calificaciones.length;
+    return prom;
+}
+//impresion de los resultados del menu 2
+	public static void Imprimir(double Calificaciones[], String Alumnos[], double Promedio)
+{
+    System.out.printf("%-10s %-10s%n%n", "Alumnos", "Calificacion");
+    for (int i = 0; i < Calificaciones.length; i++)
+    {
+        System.out.printf("%-10s %-10f%n", Alumnos[i], Calificaciones[i]);
+    }
+    System.out.println("\nEl promedio grupal es \n"+Promedio);
+   
+}
+//verifica cual es la calificacion mayor e imprime su nombre correspondiente
+	public static void Mayor (double Calificaciones[], String Alumnos[])
+{
+    double Mayor = 0;
+    String Alumno = null;
+    
+    for (int i = 0; i < Calificaciones.length; i++)
+        if (Calificaciones[i] > Mayor)
+        {
+            Mayor = Calificaciones[i];
+            Alumno = Alumnos[i];
+        }
+    System.out.println("\nLa calificacion mas alta fue "+Mayor+" y la saco "+Alumno);
+}
+//esta no se por que falla
+	public static void Menor (double Calificaciones[], String Alumnos[])
+{
+    double Menor = 0;
+    String Alumno = null;
+    
+    for (int j = 0; j > Calificaciones.length; j++)
+        if (Calificaciones[j] < Menor)
+        {
+            Menor = Calificaciones[j];
+            Alumno = Alumnos[j];
+        }
+    System.out.println("\nLa calificacion mas baja fue "+Menor+" y la saco "+Alumno);
+}
+}
