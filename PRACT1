@@ -12,6 +12,7 @@ public class practica1 {
         int x, opc=0;
         double Promedio;
         
+	//primero prefunto cuantos alumnos desea capturar y despues se desplgara el menu hasta que el usuario quiera terminar 
         System.out.print("Ingrese la cantidad de alumnos ");
         x = Terminal.nextInt();
         Calificaciones = new double[x];
@@ -48,10 +49,10 @@ public class practica1 {
         	Menor(Calificaciones, Alumnos);
         	break;
         }
-        }while(opc!=5);
+        }while(opc!=5);//almomento de presionar 5 el programa mostrara el mensaje a continuacion el cual representa la finalizacion del programa
         System.out.print("gracias por visitar mi programa");
     }
-//proceso de captura
+//proceso de captura de las calificaciones y el nombre
     public static void Inicializar(double Calificaciones[], String Alumnos[], Scanner Teclado)
 {
     for (int i = 0; i < Calificaciones.length; i++)
