@@ -1,2 +1,2 @@
-# practicas
-practicas de poo
+# practica1
+practica1
